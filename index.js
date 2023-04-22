@@ -7,10 +7,20 @@ const Helmet=require('helmet');
 const Logger=require('./middleware/logger');
 const courses=require('./routes/courses');
 const ganres=require('./routes/ganres');
+const coustomers=require('./routes/coustomers');
+const movies=require('./routes/movies');
 const home=require('./routes/home');
 const express=require('express');
+const mongoose=require('mongoose')
 const app=express();
 const swaggerUi = require('swagger-ui-express');
+
+const url = 'mongodb://localhost:27018/mydb';
+mongoose.connect(url)
+  .then(() => console.log('Connected to MongoDB...'))
+  .catch(err => console.error('Could not connect to MongoDB.', err));
+
+
 //const swaggerDocument = require('./swagger.json');
 
 // console.log('NODE_ENV'+ process.env.NODE_ENV);
@@ -41,9 +51,13 @@ dbDebugger('connected databse ....')
 app.use(Logger);
 const port= process.env.PORT||3000;
 app.listen(3000,()=>console.log('listening on '+port+'.....'));
+
+
 //endpoint
 app.use('/api/courses',courses);
 app.use('/api/ganres',ganres);
+app.use('/api/coustomers',coustomers);
+app.use('/api/movies',movies);
 app.use('/',home);
 
 

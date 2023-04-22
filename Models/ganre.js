@@ -2,11 +2,6 @@ const mongoose = require('mongoose');
 const Joi= require('joi');
 
 
-const url = 'mongodb://localhost:27018/mydb';
-mongoose.connect(url)
-  .then(() => console.log('Connected to MongoDB...'))
-  .catch(err => console.error('Could not connect to MongoDB.', err));
-
 
 const GanresSchema=new mongoose.Schema({
           name:{
@@ -32,5 +27,6 @@ function validationGenre(genre){
           return Joi.validate(genre,schema);
 }
 
+exports.GanresSchema=GanresSchema;
 exports.Ganres=Ganres;
 exports.validate=validationGenre;

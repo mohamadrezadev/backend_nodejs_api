@@ -1,9 +1,5 @@
 const mongoose = require('mongoose');
 const Joi= require('joi');
-const url = 'mongodb://localhost:27018/mydb';
-mongoose.connect(url)
-  .then(() => console.log('Connected to MongoDB...'))
-  .catch(err => console.error('Could not connect to MongoDB.', err));
 
 
 const CoustomerSchema=new mongoose.Schema({
