@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Joi= require('joi');
 Joi.objectid= require('joi-objectid')(Joi);
 
-const Rental=mongoose.model('Rental',new schema({
+const Rental=mongoose.model('rental',new schema({
           coustomer:new mongoose.schema({
                     name:{
                               type:String,

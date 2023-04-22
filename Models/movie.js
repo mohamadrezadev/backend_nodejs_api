@@ -4,7 +4,7 @@ Joi.objectid= require('joi-objectid')(Joi);
 const {GanresSchema}=require('./ganre');
 
 
-const Movie=mongoose.model('Movies',new Schema({
+const Movie=mongoose.model('movies',new mongoose.Schema({
           title:{
                     type:String,
                     required:true,
