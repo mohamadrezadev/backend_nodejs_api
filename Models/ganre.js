@@ -20,11 +20,12 @@ const GanresSchema=new mongoose.Schema({
 });
 const Ganres=mongoose.model('ganres',GanresSchema);
 
-function validationGenre(genre){
+async function validationGenre(genre){
           const schema={
                     name:Joi.string().min(3).required()
           }
-          return Joi.validate(genre,schema);
+         return  Joi.valid(genre,schema);
+          //return Joi.validateAsync(genre,schema);
 }
 
 exports.GanresSchema=GanresSchema;

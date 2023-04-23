@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const Joi= require('joi');
-Joi.objectid= require('joi-objectid')(Joi);
+const joi= require('joi');
+joi.objectid= require('joi-objectid')(joi);
 const {GanresSchema}=require('./ganre');
 
 
@@ -34,14 +34,14 @@ const Movie=mongoose.model('movies',new mongoose.Schema({
 }))
 
 
-function validationMovie(Movie){
+function validationMovie(movie){
           const schema={
-                    title:Joi.string().min(5).max(2550).required(),
-                    ganreid:Joi.objectid().requireD(),
-                    numberInstock:Joi.number().min(0).required(),
-                    dailyRentalRate:Joi.number().min(0).requireD()
+                    title:joi.string().min(5).max(2550).required(),
+                    ganreid:joi.objectid().required(),
+                    numberInstock:joi.number().min(0).required(),
+                    dailyRentalRate:joi.number().min(0).required()
           }
-          return Joi.validate(Movie,schema);
+          return joi.validate(movie,schema);
 }
 
 exports.Movie=Movie;

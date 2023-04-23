@@ -1,4 +1,5 @@
 const express=require('express');
+const Joi= require('joi');
 const router=express.Router();
 const courses=[
           {id:1,name:"alireza"},  
@@ -8,7 +9,7 @@ const courses=[
      //middleware
      
      router.get('/',(req,res)=>{
-            res.render('index',{title:'my express app',message:'hello welcome my app'})
+            //res.render('index',{title:'my express app',message:'hello welcome my app'})
         res.send("hello world!!!!! ");     
      });
      router.get('',(req,res)=>{

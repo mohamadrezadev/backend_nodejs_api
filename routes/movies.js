@@ -20,3 +20,5 @@ router.post('/',async(req,res)=>{
           res.send(movie);
           
 })
+
+module.exports=router;

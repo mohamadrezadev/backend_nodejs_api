@@ -1,4 +1,5 @@
 const express=require('express');
+const joi= require('joi');
 const {Ganres,validate}=require('../Models/ganre');
 const router=express.Router();
 
@@ -8,13 +9,15 @@ router.get('/',async (req,res)=>{
        res.send(result);
 });
 router.get('/:id',async (req,res)=>{
+       
           const genre=await Ganres.findById({_id:req.params.id}) ;
           if(!genre) return res.status(404).send('the genre with th given id ');
           res.send(genre);
 });
 router.post('/',async (req,res)=>{
+          console.log(req.body);
           const {erorr} =validate(req.body);
-          if(erorr)return res.status(400).send(error.details[0].message);  
+          if(erorr)return res.status(400).send("invalid Request");  
           const ganre=new Ganres({
               name:req.body.name,
               category:req.body.category,
